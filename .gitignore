@@ -1,5 +1,9 @@
-.DS_Store
-/.build
-/Packages
-/*.xcodeproj
+## Xcode User Data
 xcuserdata/
+
+## Playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
+# Swift Package Manager
+.swiftpm/
