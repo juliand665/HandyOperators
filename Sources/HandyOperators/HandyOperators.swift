@@ -24,6 +24,6 @@ Takes an optional, returning its wrapped value if present and throwing the given
 
 The error is wrapped in an `@autoclosure`, so it's not evaluated unless it's actually thrown.
 */
-func ??? <Wrapped>(optional: Wrapped?, error: @autoclosure () -> Error) throws -> Wrapped {
+public func ??? <Wrapped>(optional: Wrapped?, error: @autoclosure () -> Error) throws -> Wrapped {
 	try optional ?? { throw error() }()
 }
