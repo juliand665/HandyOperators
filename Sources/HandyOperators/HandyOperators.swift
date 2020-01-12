@@ -9,7 +9,11 @@ let dateFormatter = DateFormatter() <- {
 }
 ```
 */
-@discardableResult public func <- <T>(object: T, transform: (inout T) throws -> Void) rethrows -> T {
+@discardableResult
+public func <- <T>(
+	object: T,
+	transform: (inout T) throws -> Void
+) rethrows -> T {
 	var copy = object
 	try transform(&copy)
 	return copy
@@ -24,6 +28,9 @@ Takes an optional, returning its wrapped value if present and throwing the given
 
 The error is wrapped in an `@autoclosure`, so it's not evaluated unless it's actually thrown.
 */
-public func ??? <Wrapped>(optional: Wrapped?, error: @autoclosure () -> Error) throws -> Wrapped {
-	try optional ?? { throw error() }()
+public func ??? <Wrapped>(
+	optional: Wrapped?,
+	error: @autoclosure () throws -> Error
+) throws -> Wrapped {
+	try optional ?? { throw try error() }()
 }
