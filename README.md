@@ -51,7 +51,7 @@ func doSomething1(with optional: String?) throws {
 }
 
 // without HandyOperators
-func doSomething1(with optional: String?) throws {
+func doSomething2(with optional: String?) throws {
     guard let value = optional else { throw MissingValueError() }
     print(value)
 }
