@@ -9,16 +9,16 @@ Applies a closure to a value, returning the transformed copy.
 ```swift
 final class Client {
     // with HandyOperators
-	let jsonDecoder1 = JSONDecoder() <- {
-		$0.dateDecodingStrategy = .iso8601
-	}
+    let jsonDecoder1 = JSONDecoder() <- {
+        $0.dateDecodingStrategy = .iso8601
+    }
     
     // without HandyOperators
-	let jsonDecoder2: JSONDecoder = {
+    let jsonDecoder2: JSONDecoder = {
         let jsonDecoder = JSONDecoder()
-		jsonDecoder.dateDecodingStrategy = .iso8601
+        jsonDecoder.dateDecodingStrategy = .iso8601
         return jsonDecoder
-	}()
+    }()
 }
 ```
 
