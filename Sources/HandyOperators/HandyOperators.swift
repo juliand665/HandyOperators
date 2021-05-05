@@ -1,4 +1,10 @@
-infix operator <-: NilCoalescingPrecedence
+infix operator <-: WithPrecedence
+
+precedencegroup WithPrecedence {
+	lowerThan: NilCoalescingPrecedence
+	
+	associativity: left
+}
 
 /**
 Often called `with`, this function allows you to apply extra transformations to something without creating a `var` to mutate.
