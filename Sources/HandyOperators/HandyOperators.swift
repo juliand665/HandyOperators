@@ -2,6 +2,7 @@ infix operator <-: WithPrecedence
 
 precedencegroup WithPrecedence {
 	lowerThan: NilCoalescingPrecedence
+	higherThan: ComparisonPrecedence
 	
 	associativity: left
 }
