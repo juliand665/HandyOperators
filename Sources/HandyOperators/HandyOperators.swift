@@ -28,6 +28,29 @@ public func <- <T>(
 	return copy
 }
 
+/**
+ Often called `with`, this function allows you to apply extra transformations to something without creating a `var` to mutate.
+ 
+ Especially useful when configuring constants, e.g.:
+ ```swift
+ let dateFormatter = DateFormatter() <- {
+ 	$0.timeStyle = .long
+ }
+ ```
+ */
+// TODO: just waiting for reasync here
+@available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+@inlinable
+@discardableResult
+public func <- <T>(
+	object: T,
+	transform: (inout T) async throws -> Void
+) async rethrows -> T {
+	var copy = object
+	try await transform(&copy)
+	return copy
+}
+
 infix operator ???: NilCoalescingPrecedence
 
 /**
