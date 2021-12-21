@@ -51,6 +51,45 @@ public func <- <T>(
 	return copy
 }
 
+// these disfavored nonmutating overloads allow you to use pointfree notation like e.g. `getData() <- handleUpdate`
+
+/**
+ Often called `with`, this function allows you to apply extra transformations to something without creating a `var` to mutate.
+ 
+ Especially useful when configuring constants, e.g.:
+ ```swift
+ let dateFormatter = DateFormatter() <- {
+	$0.timeStyle = .long
+ }
+ ```
+ */
+@_disfavoredOverload
+@discardableResult
+public func <- <T>(object: T, use: (T) throws -> Void) rethrows -> T {
+	try use(object)
+	return object
+}
+
+/**
+ Often called `with`, this function allows you to apply extra transformations to something without creating a `var` to mutate.
+ 
+ Especially useful when configuring constants, e.g.:
+ ```swift
+ let dateFormatter = DateFormatter() <- {
+	$0.timeStyle = .long
+ }
+ ```
+ */
+// TODO: just waiting for reasync here
+@available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+@_disfavoredOverload
+@inlinable
+@discardableResult
+public func <- <T>(object: T, use: (T) async throws -> Void) async rethrows -> T {
+	try await use(object)
+	return object
+}
+
 infix operator ???: NilCoalescingPrecedence
 
 /**
