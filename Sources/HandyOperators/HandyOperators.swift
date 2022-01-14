@@ -39,7 +39,7 @@ public func <- <T>(
  ```
  */
 // TODO: just waiting for reasync here
-@available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+@available(macOS 10.15, iOS 15, tvOS 13, watchOS 6, *)
 @inlinable
 @discardableResult
 public func <- <T>(
@@ -81,7 +81,7 @@ public func <- <T>(object: T, use: (T) throws -> Void) rethrows -> T {
  ```
  */
 // TODO: just waiting for reasync here
-@available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+@available(macOS 10.15, iOS 15, tvOS 13, watchOS 6, *)
 @_disfavoredOverload
 @inlinable
 @discardableResult
