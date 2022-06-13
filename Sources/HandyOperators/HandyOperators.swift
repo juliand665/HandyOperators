@@ -8,15 +8,15 @@ precedencegroup WithPrecedence {
 }
 
 /**
-Often called `with`, this function allows you to apply extra transformations to something without creating a `var` to mutate.
-
-Especially useful when configuring constants, e.g.:
+ Often called `with`, this function allows you to apply extra transformations to something without creating a `var` to mutate.
+ 
+ Especially useful when configuring constants, e.g.:
  ```swift
-let dateFormatter = DateFormatter() <- {
-	$0.timeStyle = .long
-}
-```
-*/
+ let dateFormatter = DateFormatter() <- {
+     $0.timeStyle = .long
+ }
+ ```
+ */
 @inlinable
 @discardableResult
 public func <- <T>(
@@ -28,17 +28,18 @@ public func <- <T>(
 	return copy
 }
 
+// TODO: just waiting for reasync here
 /**
  Often called `with`, this function allows you to apply extra transformations to something without creating a `var` to mutate.
  
  Especially useful when configuring constants, e.g.:
+ 
  ```swift
  let dateFormatter = DateFormatter() <- {
- 	$0.timeStyle = .long
+     $0.timeStyle = .long
  }
  ```
  */
-// TODO: just waiting for reasync here
 @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
 @inlinable
 @discardableResult
@@ -57,9 +58,10 @@ public func <- <T>(
  Often called `with`, this function allows you to apply extra transformations to something without creating a `var` to mutate.
  
  Especially useful when configuring constants, e.g.:
+ 
  ```swift
  let dateFormatter = DateFormatter() <- {
-	$0.timeStyle = .long
+     $0.timeStyle = .long
  }
  ```
  */
@@ -70,17 +72,17 @@ public func <- <T>(object: T, use: (T) throws -> Void) rethrows -> T {
 	return object
 }
 
+// TODO: just waiting for reasync here
 /**
  Often called `with`, this function allows you to apply extra transformations to something without creating a `var` to mutate.
  
  Especially useful when configuring constants, e.g.:
  ```swift
  let dateFormatter = DateFormatter() <- {
-	$0.timeStyle = .long
+     $0.timeStyle = .long
  }
  ```
  */
-// TODO: just waiting for reasync here
 @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
 @_disfavoredOverload
 @inlinable
@@ -93,12 +95,12 @@ public func <- <T>(object: T, use: (T) async throws -> Void) async rethrows -> T
 infix operator ???: NilCoalescingPrecedence
 
 /**
-"unwrap-or-error"
-
-Takes an optional, returning its wrapped value if present and throwing the given error otherwise.
-
-The error is wrapped in an `@autoclosure`, so it's not evaluated unless it's actually thrown.
-*/
+ "unwrap-or-error"
+ 
+ Takes an optional, returning its wrapped value if present and throwing the given error otherwise.
+ 
+ The error is wrapped in an `@autoclosure`, so it's not evaluated unless it's actually thrown.
+ */
 @inlinable
 public func ??? <Wrapped>(
 	optional: Wrapped?,
